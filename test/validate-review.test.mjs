@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { validateReview } from '../src/validate-review.mjs';
+const example = JSON.parse(readFileSync(new URL('../examples/review.json', import.meta.url)));
+test('accepts valid review', () => assert.deepEqual(validateReview(example), []));
+test('rejects unknown severity', () => assert.ok(validateReview({...example,findings:[{...example.findings[0],severity:'excellent'}]}).length));
+test('rejects unknown fields', () => assert.ok(validateReview({...example,score:100}).length));
+test('rejects empty observation', () => assert.ok(validateReview({...example,findings:[{...example.findings[0],observation:''}]}).length));
+test('rejects null review', () => assert.ok(validateReview(null).length));
