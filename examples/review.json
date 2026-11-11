@@ -1,0 +1,13 @@
+{
+  "project": "Example task manager",
+  "summary": "The page presents all actions with equal prominence despite one primary user task.",
+  "findings": [
+    {
+      "severity": "minor",
+      "observation": "The four top-level cards have identical size and contrast.",
+      "impact": "The next actionable task is difficult to distinguish from passive status information.",
+      "recommendation": "Emphasize the next task; move passive metrics into a compact secondary region."
+    }
+  ],
+  "verification": "Illustrative review only; no browser, keyboard, or accessibility testing performed."
+}
