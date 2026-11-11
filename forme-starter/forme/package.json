@@ -1,0 +1,1 @@
+{"name":"@bit-foundry-labs/forme","version":"0.1.0","private":true,"type":"module","scripts":{"test":"node --test","validate:example":"node src/validate-review.mjs examples/review.json"},"engines":{"node":">=20"}}

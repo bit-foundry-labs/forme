@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Forme design review",
+  "type": "object",
+  "required": ["product", "inputs", "findings", "verification"],
+  "additionalProperties": false,
+  "properties": {
+    "product": {"type": "string", "minLength": 1},
+    "inputs": {"type": "array", "items": {"type": "string"}},
+    "findings": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["severity", "category", "observation", "rationale", "recommendation", "uncertain"], "properties": {
+      "severity": {"enum": ["critical", "major", "minor"]},
+      "category": {"enum": ["information-architecture", "hierarchy", "typography", "composition", "color", "interaction", "accessibility", "responsiveness", "originality"]},
+      "observation": {"type": "string", "minLength": 1},
+      "rationale": {"type": "string", "minLength": 1},
+      "recommendation": {"type": "string", "minLength": 1},
+      "uncertain": {"type": "boolean"}
+    }}},
+    "verification": {"type": "array", "items": {"type": "string"}}
+  }
+}

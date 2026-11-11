@@ -1,0 +1,15 @@
+{
+  "product": "Example project settings",
+  "inputs": ["UI description only; no screenshot supplied"],
+  "findings": [
+    {
+      "severity": "major",
+      "category": "interaction",
+      "observation": "The described save action has no stated confirmation behavior.",
+      "rationale": "Users may not know whether their changes persisted.",
+      "recommendation": "Provide a concise saved state and an error state; test both paths.",
+      "uncertain": true
+    }
+  ],
+  "verification": ["Check save success and failure states", "Verify keyboard focus order"]
+}

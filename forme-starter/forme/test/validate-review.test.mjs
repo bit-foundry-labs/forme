@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { validateReview } from '../src/validate-review.mjs';
+const valid = JSON.parse(readFileSync(new URL('../examples/review.json', import.meta.url)));
+test('accepts example', () => assert.deepEqual(validateReview(valid), []));
+test('rejects unknown severity', () => { const x = structuredClone(valid); x.findings[0].severity = 'urgent'; assert.ok(validateReview(x).length); });
+test('rejects invented fields', () => { const x = structuredClone(valid); x.secret = true; assert.ok(validateReview(x).length); });
+test('rejects empty observation', () => { const x = structuredClone(valid); x.findings[0].observation = ' '; assert.ok(validateReview(x).length); });
+test('rejects null review', () => assert.ok(validateReview(null).length));
